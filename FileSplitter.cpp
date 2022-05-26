@@ -8,7 +8,7 @@
 
 using byte_t = char;
 
-inline int split(std::size_t mx_fsz, std::string path)
+int split(std::size_t mx_fsz, std::string path)
 {
 	std::ifstream in = std::ifstream(path, std::ios::in | std::ios::binary);
 	byte_t *buf = new byte_t[mx_fsz + 1]{'\0'};
@@ -21,7 +21,8 @@ inline int split(std::size_t mx_fsz, std::string path)
 	}
 	if (!in)
 	{
-		std::cerr << "Failed to open the input file: " << path << std::endl;
+		std::cerr << "Failed to open the input file: \""
+				  << path << "\" or it's empty." << std::endl;
 		goto FAIL_RET;
 	}
 	if (create_dir((path += "-split_res/").c_str()))
@@ -67,11 +68,16 @@ int main(int argc, char *argv[])
 	{
 		for (int i = 1; i + 1 < argc; i += 2)
 		{
-			ss.clear();
 			ss << argv[i];
 			if (!(ss >> mx_fsz))
 			{
 				std::cerr << "Invalid parameter for maximal file size!" << std::endl;
+				while (ss)
+				{
+					byte_t byte;
+					ss.read(&byte, 1);
+				} // clear the buffer
+				ss.clear();
 				continue;
 			}
 			if (split(mx_fsz, path = argv[i + 1]) == -1)

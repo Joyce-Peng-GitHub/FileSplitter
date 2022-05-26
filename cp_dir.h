@@ -35,21 +35,21 @@ int32_t create_dir(const char *s_path)
 		return -1;
 	}
 	strcpy(s, s_path);
-	// append '/'
+	/* append '/' */
 	if (s[sz_len - 1] != '\\' && s[sz_len - 1] != '/')
 	{
 		s[sz_len++] = '/';
 		s[sz_len++] = '\0';
 	}
 
-	// make directory
+	/* make directory */
 	for (i = 0; i < sz_len; i++)
 	{
 		if (s[i] == '\\' || s[i] == '/')
 		{
 			s[i] = '\0';
 
-			// create if not exist
+			/* create if not exist */
 			ret = ACCESS(s, 0);
 			if (ret != 0)
 			{
@@ -59,7 +59,7 @@ int32_t create_dir(const char *s_path)
 					return -1;
 				}
 			}
-			// replace '\\' with '/'
+			/* replace '\\' with '/' */
 			s[i] = '/';
 		}
 	}

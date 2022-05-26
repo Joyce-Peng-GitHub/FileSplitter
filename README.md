@@ -2,13 +2,16 @@
 # File Splitter
 ## Compile Command
 ```bash
+bash build.sh
+```
+```bash
 g++ FileSplitter.cpp -o FileSplitter
 ```
 #### Warning
 ###### Language Standard
 You must use a C++ standard not earlier than `C++0x`, which means you must choose a standard from `C++0x`(the same as `C++11`), `C++14`, `C++17`, `C++20`, and even later standards.
 
-As for me, I recommend to use `C++14` standard, like this:
+As for me, I recommend to use `C++14` standard, like the `build.sh`:
 ```bash
 g++ FileSplitter.cpp -o FileSplitter -std=c++14
 ```
@@ -49,13 +52,16 @@ Input `'\0'` to quit the program. It's `Ctrl-z` in *Windows*, while `Ctrl-d` in 
 # 文件拆分器
 ## 编译命令
 ```bash
+bash build.sh
+```
+```bash
 g++ FileSplitter.cpp -o FileSplitter
 ```
 #### 警告
 ###### 语言标准
 你必须使用不早于`C++0x`的C++标准，这意味着你必须从`C++0x`（等价于`C++11`，`C++14`，`C++17`，`C++20`，以及更新的标准中选择一个。
 
-对于我个人来说，我推荐使用`C++14`标准，像这样：
+对于我个人来说，我推荐使用`C++14`标准，就像`build.sh`那样：
 ```bash
 g++ FileSplitter.cpp -o FileSplitter -std=c++14
 ```
